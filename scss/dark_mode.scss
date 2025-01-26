@@ -1,0 +1,253 @@
+:root {
+  --table-border-color-light: #F0E9E5;
+  --dark-bg-color: #252c30;
+  --dark-anchor-color: #f4f4f4; /*previously #f0e9e5*/
+}
+
+body.dark {
+  * {
+    transition: background-color 400ms ease;
+  }
+  background-color: var(--dark-bg-color);
+  color: var(--dark-anchor-color);
+
+  h1, h2, h3, h4, h5,
+  .h1, .h2, .h3, .h4, .h5 {
+    color: var(--dark-anchor-color);
+  }
+
+  a {
+    color: var(--dark-anchor-color);
+  }
+
+  div[role="main"] table {
+    border-left: 1px solid var(--table-border-color-light);
+    border-top: 1px solid var(--table-border-color-light);
+  }
+  div[role="main"] table th,
+  div[role="main"] table td {
+    border-right: 1px solid var(--table-border-color-light);
+    border-bottom: 1px solid var(--table-border-color-light);
+    padding: 10px 20px;
+  }
+
+  /* NAVBAR */
+  .navbar.fixed-top {
+    background-color: var(--dark-bg-color) !important;
+    .border-sliding-from-center:before {
+      color: var(--dark-anchor-color);
+    }
+    .border-sliding-from-center.active:before {
+      background: #C998E7;
+    }
+    .nav-item .dropdown-menu {
+      background-color: var(--dark-bg-color)
+    }
+    .dropdownmoremenu .dropdown-menu,
+    #user-action-menu {
+      background-color: var(--dark-bg-color);
+      border-color: var(--dark-anchor-color);
+      .header .carousel-navigation-link {
+        img {
+          filter: invert(98%) sepia(46%) saturate(852%) hue-rotate(292deg) brightness(108%) contrast(88%);
+        }
+      }
+      .header .carousel-navigation-link:hover,
+      .header .carousel-navigation-link:focus {
+        background-color: #551C77;
+      }
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    .drawercontent .list-group-item:not(.active),
+    .list-group-item-action:not(.active) {
+      background-color: #495057 !important;
+    }
+    .list-group-item-action:hover,
+    .list-group-item-action:focus {
+      color: var(--dark-anchor-color);
+    }
+  }
+  .navbar.fixed-top *:not(.userinitials) {
+    color: var(--dark-anchor-color);
+  }
+
+  .primary-navigation .navigation .nav-link {
+    color: var(--dark-anchor-color);
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .navbar-light .navbar-nav .nav-link:hover,
+  .navbar-light .navbar-nav .nav-link:focus {
+    color: var(--dark-anchor-color);
+    box-shadow: none;
+    background-color: transparent;
+  }
+
+  .moremenu .nav-link.active,
+  .moremenu .nav-link.active:hover {
+    border-bottom-color: transparent;
+  }
+  .navbar-light .navbar-nav .nav-link.active {
+    color: #C998E7;
+  }
+
+  .userinitials {
+    background-color: var(--dark-anchor-color);
+  }
+  .input-group label {
+    font-size: 18px;
+  }
+  .custom-control-label::before  {
+    border-color: #551C77;
+    margin-top: 3px;
+  }
+  .custom-switch .custom-control-label::after {
+    background-color: #551C77;
+    margin-top: 3px;
+  }
+
+  .drawer-toggles .drawer-toggler .btn {
+    background-color: var(--dark-anchor-color);
+  }
+
+  /* Left drawer */
+  .drawer-left, .drawer-right {
+    background-color: var(--dark-bg-color);
+  }
+  .drawerheader .btn {
+    color: #C998E7;
+  }
+  .drawerheader .btn:focus, .btn.focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem #C998E7;
+  }
+  .courseindex .courseindex-item .courseindex-link,
+  .courseindex .courseindex-item .courseindex-chevron {
+    color: var(--dark-anchor-color);
+  }
+  .courseindex .courseindex-item.dimmed .courseindex-link,
+  .courseindex .courseindex-item.dimmed .courseindex-chevron {
+    color: #C0A291;
+  }
+
+  #page-header .singlebutton .btn-secondary {
+    background-color: var(--dark-anchor-color);
+    border: none;
+  }
+
+  #page.drawers {
+    scrollbar-color: #f8f9fa transparent;
+  }
+
+  #page.drawers .main-inner,
+  section.block{
+    background-color: var(--dark-bg-color);
+  }
+
+  /** CONTENT AREA **/
+  #block-region-content {
+    .card {
+      border: 1px solid rgba(240, 233, 229, 0.125);
+    }
+    #cebSearchInput {
+      background-color: #FAF7F6;
+      color: #252131;
+    }
+    #cebDropDownContainer {
+      .dropdown-toggle {
+        background-color: #FAF7F6;
+        color: #252131;
+      }
+      .dropdown-menu {
+        background-color: var(--dark-bg-color);
+        color: var(--dark-anchor-color);
+        border-color: var(--dark-anchor-color);
+      }
+    }
+    .ceb-pagination-container {
+      #cebCourseCount {
+        color: var(--dark-anchor-color);
+      }
+      #cebSortContainer .dropdown-toggle {
+        background-color: #FAF7F6;
+        color: #252131;
+      }
+    }
+    .pagination__numbers .btn-primary {
+      background-color: #9431CF;
+    }
+  }
+
+  #cebMainContainer {
+    .course-card {
+      background-color: var(--dark-bg-color);
+      box-shadow: 0 0 10px 0 rgba(240, 233, 229, 0.3);
+    }
+    .course-card__label.mc-original {
+      color: #252131;
+    }
+  }
+
+  .ceb-modal {
+    .modal-content {
+      background-color: var(--dark-bg-color);
+      color: var(--dark-anchor-color);
+    }
+  }
+
+  .secondary-navigation .moremenu {
+    background-color: var(--dark-bg-color);
+    .nav-tabs {
+      background-color: var(--dark-bg-color);
+      color: var(--dark-anchor-color);
+      .nav-link.active:focus,
+      .nav-link.active:hover,
+      .nav-link:focus,
+      .nav-link:hover{
+        background-color: transparent;
+      }
+      .nav-link:hover {
+        color: #C998E7;
+      }
+      .nav-item.show .nav-link,
+      .nav-link.active {
+        background-color: transparent;
+        border-color: transparent;
+      }
+      .dropdown-menu.show {
+        background-color: var(--dark-bg-color);
+        border-color: var(--dark-anchor-color);
+      }
+    }
+    .nav-tabs .nav-link.active,
+    .nav-tabs .nav-item.show .nav-link {
+      color: #C998E7;
+    }
+  }
+
+  &.path-mod .activity-header:not(:empty) {
+    background-color: transparent;
+  }
+  &.path-mod .activity-header .badge {
+    color: white ;
+    border-color: #F6688E !important;
+    background-color: #F6688E !important;
+    opacity: 0.9;
+    mix-blend-mode: unset;
+  }}
+
+body.dark:not(#page-my-index) {
+  #region-main {
+    background-color: var(--dark-bg-color);
+    color: var(--dark-anchor-color);
+    transition: background-color 400ms ease;
+    #frontpage-available-course-list .coursebox,
+    #frontpage-course-list .coursebox,
+    .course-search-result .coursebox {
+      border: 1px solid var(--dark-anchor-color);
+    }
+  }
+}

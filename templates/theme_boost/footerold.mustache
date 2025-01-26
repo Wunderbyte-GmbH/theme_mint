@@ -1,0 +1,109 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    Page footer.
+
+    Copy taken from theme_boost
+
+    Adding hard coded links to imprint and privacy policy,
+    which are located within local_iubh_generic.
+}}
+<footer id="page-footer">
+    <div class="footer-container">
+        <div class="row">
+            <div class="col">
+                <div class="logo-wrapper">
+                    <a href="https://mintcampus.org/" target="_blank" class="aabtn">
+                        <img src="/theme/mint/pix/round-logo.png" alt="MINTCampus Logo">
+                    </a>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row content-row">
+                    <div class="content-block block1">
+                        <div class="heading">{{#str}}footer:block1_heading, theme_mint{{/str}}</div>
+                        <div class="content">
+                            <div><b>matrix gGmbH</b></div>
+                            <div>Düsseldorfer Str. 16, 40699 Erkrath</div>
+                            <div>info@mintcampus.org</div>
+                        </div>
+                    </div>
+                    <div class="content-block block2">
+                        <div class="heading">{{#str}}footer:block2_heading, theme_mint{{/str}}</div>
+                        <div class="content">
+                            {{#str}}footer:block2_text, theme_mint{{/str}}
+                        </div>
+                    </div>
+                    <div class="content-block block3">
+                        <div class="heading">blank</div>
+                        <div class="content">
+                            <a href="https://mintcampus.org/roadmap/" target="_blank" class="">Roadmap</a>
+                            <a href="https://mintcampus.org/news/publikationen/" target="_blank">Publikationen</a>
+                            <a href="https://mintcampus.org/unsere-partnerinnen-netzwerke/" target="_blank">Partner:innen & Netzwerke</a>
+                            <a href="https://mintcampus.org/ueber-uns/" target="_blank" class="">Über uns</a>
+                            <a href="https://mintcampus.org/kontakt/" target="_blank">Kontakt</a>
+                            <a href="https://mintcampus.org/datenschutzerklaerung/" target="_blank">Datenschutz</a>
+                            <a href="https://mintcampus.org/nutzungsbedingungen/" target="_blank">Nutzungsbedingungen</a>
+                            <a href="https://mintcampus.org/impressum/" target="_blank">Impressum</a>
+                            <a href="https://mintcampus.org/fur-lernanbietende/" target="_blank">Für Lernanbietende</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="copyright">Made with 💜 by MINT-Campus-Team <span class="copyright-icon">©</span>2023<a href="https://matrix-gruppe.de/matrix-gemeinnuetzig/" class="aabtn matrix-link" target="_blank"><u>matrix</u> <i class="icon fa fa-external-link"></i></a></div>
+            <div class="follow-us">
+                <span>{{#str}}footer:follow-us, theme_mint{{/str}}</span>
+                <a class="media-icon aabtn" href="https://www.linkedin.com/company/mintcampusde" target="_blank">
+                    <img src="/theme/mint/pix/linkedin.svg" alt="linkedin">
+                </a>
+                <a class="media-icon aabtn" href="https://www.youtube.com/channel/UCjo456vyGJ9pK-yf6nO1ZWw" target="_blank">
+                    <img src="/theme/mint/pix/youtube.svg" alt="youtube">
+                </a>
+                <a class="media-icon aabtn" href="https://www.instagram.com/mintcampus.lernplattform/" target="_blank">
+                    <img src="/theme/mint/pix/instagram.svg" alt="instagram">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="sponsors">
+        <div class="image-wrapper">
+            <a href="https://matrix-gruppe.de/matrix-gemeinnuetzig/" target="_blank">
+                <img src="/theme/mint/pix/Logoleiste-Matrix.png" alt="Matrix Logo">
+            </a>
+            <a href="https://www.stifterverband.org/" target="_blank">
+                <img src="/theme/mint/pix/Logoleiste-Stifterverband-croped.png" alt="Stifterverband Logo">
+            </a>
+            <a href="https://www.stiftung-kinder-forschen.de/" target="_blank">
+                <img src="/theme/mint/pix/kids_logo_footer.png" alt="Logo Stiftung Kinder forschen">
+            </a>
+        </div>
+        <div class="image-wrapper">
+            <a href="https://www.bmbf.de/bmbf/de/home/home_node.html" target="_blank">
+                <img src="/theme/mint/pix/BMBF.png" alt="BMBF Logo">
+            </a>
+        </div>
+    </div>
+    {{{ output.standard_end_of_body_html }}}
+</footer>
+{{#js}}
+    require(['theme_boost/footer-popover'], function(FooterPopover) {
+    FooterPopover.init();
+    });
+{{/js}}

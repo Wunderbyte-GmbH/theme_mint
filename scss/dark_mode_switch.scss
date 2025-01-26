@@ -1,0 +1,193 @@
+//@use postcss-nested;
+
+:root {
+  --bg-planet-bright: #F2C94C;
+  --bg-planet-shadow: #828894;
+  --bg-planet-lightshadow: #D7D7D820;
+  --dot-size: 0.25rem;
+  &.bg-dark {
+    --bg-color: #2C3144;
+  }
+}
+
+* {
+  box-sizing: inherit;
+  &:before,
+  &:after {
+    box-sizing: inherit;
+  }
+}
+
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  body {
+    transition: background-color 400ms ease;
+    .switch-wrapper {
+      display: grid;
+      place-items: center;
+      margin: 0 0.75rem;
+    }
+    #usernavigation .switch-wrapper .mode-switch {
+      cursor: pointer;
+      margin: 0;
+      position: relative;
+
+      /* To make outline on mobile invisible */
+      -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+
+      input[type="checkbox"] {
+        height: 0;
+        width: 0;
+        visibility: hidden;
+        position: absolute;
+      }
+
+      .planet {
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 50%;
+        overflow: hidden;
+        background: radial-gradient(3.75em, 99%, transparent 100%);
+        background-color: var(--bg-planet-bright);
+        background-repeat: no-repeat;
+        position: relative;
+        will-change: background;
+        transition: all 400ms ease;
+
+        /* Safari transition issue */
+        backface-visibility: hidden;
+        &::after {
+          content: "";
+          background-color: var(--bg-planet-shadow);
+          width: 2rem;
+          height: 2rem;
+          position: absolute;
+          border-radius: 50%;
+          will-change: opacity, transform, background-color;
+          opacity: 0;
+          transform: translate(2em, -2em);
+          transition: opacity 400ms ease, transform 400ms ease, background-color 400ms ease;
+        }
+      }
+
+      .elements {
+        width: 7px;
+        height: 7px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: transform 400ms ease;
+
+        svg {
+          position: absolute;
+          width: 7px;
+          height: 7px;
+          opacity: 1;
+          transition: transform 400ms ease, opacity 200ms ease, width 200ms ease, height 200ms ease;
+          circle {
+            fill: var(--bg-planet-bright);
+            transition: fill 400ms ease;
+          }
+          &:first-child {
+            transform: translate(-12px, -12px);
+          }
+          &:nth-child(2) {
+            transform: translate(0, -17px);
+          }
+          &:nth-child(3) {
+            transform: translate(12px, -12px);
+          }
+          &:nth-child(4) {
+            transform: translate(17px, 0);
+          }
+          &:nth-child(5) {
+            transform: translate(12px, 12px);
+          }
+          &:nth-child(6) {
+            transform: translate(0, 17px);
+          }
+          &:nth-child(7) {
+            transform: translate(-12px, 12px);
+          }
+          &:nth-child(8) {
+            transform: translate(-17px, 0);
+          }
+        }
+      }
+    }
+  }
+
+  &.bg-dark {
+    body {
+      background-color: var(--bg-color);
+    }
+  }
+  #usernavigation .switch-wrapper  .mode-switch[data-mode="dark"] {
+    .planet {
+      --bg-planet-bright: #D7D7D8;
+      &::after {
+        opacity: 1;
+        transform: translate(0.6em, -0.5em);
+      }
+    }
+
+    .elements {
+      transform-origin: 2px 2px;
+      transform: rotate(180deg);
+      svg {
+        &:first-child {
+          opacity: 0;
+        }
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        &:nth-child(3) {
+          opacity: 0;
+        }
+        &:nth-child(4) {
+          opacity: 0;
+        }
+        &:nth-child(5) {
+          transform: translate(0, 0);
+          width: 0.3em;
+          height: 0.3em;
+          circle {
+            fill: var(--bg-planet-lightshadow);
+          }
+        }
+        &:nth-child(6) {
+          transform: translate(-6px, -3px);
+          width: 0.3em;
+          height: 0.3em;
+          circle {
+            fill: var(--bg-planet-lightshadow);
+          }
+        }
+        &:nth-child(7) {
+          transform: translate(-9px, 1px);
+          width: 0.7em;
+          height: 0.7em;
+          circle {
+            fill: var(--bg-planet-lightshadow);
+          }
+        }
+        &:nth-child(8) {
+          width: 0.45em;
+          height: 0.45em;
+          transform: translate(-3px, 8px);
+          circle {
+            fill: var(--bg-planet-lightshadow);
+          }
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  html body .switch-wrapper {
+    margin-right: 0.7rem;
+  }
+}
