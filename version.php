@@ -22,6 +22,6 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2023121707;
+$plugin->version   = 2023121710;
 $plugin->requires  = 2022111800;
 $plugin->component = 'theme_mint';

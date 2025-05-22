@@ -36,3 +36,7 @@ $string['region-side-pre'] = 'Right';
 $string['showfooter'] = 'Show footer';
 $string['unaddableblocks'] = 'Unneeded blocks';
 $string['unaddableblocks_desc'] = 'The blocks specified are not needed when using this theme and will not be listed in the \'Add a block\' menu.';
+$string['templateemailhtmlprefix'] = 'MINTCAMPUS<br>';
+$string['templateemailhtmlsuffix'] = '';
+$string['templateemailtextprefix'] = '';
+$string['templateemailtextsuffix'] = '';
