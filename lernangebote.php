@@ -1,4 +1,19 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
+
 require_once('../../config.php');
 
 if (isset($USER) && isset($USER->id) && $USER->id > 0 && $USER->auth == "oauth2") {
@@ -12,16 +27,16 @@ if (isset($USER) && isset($USER->id) && $USER->id > 0 && $USER->auth == "oauth2"
 }
 
 
-function fetchLoginUrl() {
+function fetchloginurl() {
     // Define the target URL
     $url = 'https://mintcampus.org/wp-json/custom/v1/login_url';
 
     // Set a stream context with a timeout of 2 seconds
-    $context = stream_context_create(array(
-        'http' => array(
-            'timeout' => 2
-        )
-    ));
+    $context = stream_context_create([
+        'http' => [
+            'timeout' => 2,
+        ],
+    ]);
 
     // Fetch content from the URL
     $response = @file_get_contents($url, false, $context);

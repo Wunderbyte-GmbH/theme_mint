@@ -17,7 +17,7 @@
 /**
  * A drawer based layout for the boost theme.
  *
- * @package   theme_boost
+ * @package   theme_mint
  * @copyright 2021 Bas Brands
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -29,9 +29,6 @@ require_once($CFG->dirroot . '/course/lib.php');
 
 // Add block button in editing mode.
 $addblockbutton = $OUTPUT->addblockbutton();
-
-user_preference_allow_ajax_update('drawer-open-index', PARAM_BOOL);
-user_preference_allow_ajax_update('drawer-open-block', PARAM_BOOL);
 
 if (isloggedin()) {
     $courseindexopen = (get_user_preferences('drawer-open-index', true) == true);
@@ -82,14 +79,14 @@ $primarymenu = $primary->export_for_template($renderer);
 
 // Custom nodes order
 if (isloggedin() || isguestuser()) {
-    $mainwpnode = array_filter($primarymenu['moremenu']["nodearray"], function($node) {
+    $mainwpnode = array_filter($primarymenu['moremenu']["nodearray"], function ($node) {
         return isset($node->url) && strtolower($node->url) === 'https://mintcampus.org/alle-lernangebote/';
     });
     array_splice($primarymenu['moremenu']["nodearray"], array_keys($mainwpnode)[0], 1);
     array_unshift($primarymenu['moremenu']["nodearray"], reset($mainwpnode));
-    $siteadminnode = array_filter($primarymenu['moremenu']["nodearray"], function($node) {
+    $siteadminnode = array_filter($primarymenu['moremenu']["nodearray"], function ($node) {
         return is_array($node) && isset($node['key']) && $node['key'] === 'siteadminnode';
-    });//echo '<pre>';var_dump($siteadminnode);echo '</pre>';die;
+    });// echo '<pre>';var_dump($siteadminnode);echo '</pre>';die;
     if ($siteadminnode) {
         array_splice($primarymenu['moremenu']["nodearray"], array_keys($siteadminnode)[0], 1);
         $primarymenu['moremenu']["nodearray"][] = reset($siteadminnode);
@@ -124,7 +121,7 @@ $templatecontext = [
     'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu),
     'overflow' => $overflow,
     'headercontent' => $headercontent,
-    'addblockbutton' => $addblockbutton
+    'addblockbutton' => $addblockbutton,
 ];
 
 echo $OUTPUT->render_from_template('theme_boost/drawers', $templatecontext);

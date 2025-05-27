@@ -17,7 +17,7 @@
 /**
  * Contains renderer class.
  *
- * @package   mod_customcert
+ * @package   theme_mint
  * @copyright 2017 Mark Nelson <markn@moodle.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -33,7 +33,6 @@ namespace theme_mint\output\mod_customcert;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class renderer extends \mod_customcert\output\renderer {
-
     /**
      * Renders the verify certificate results.
      *

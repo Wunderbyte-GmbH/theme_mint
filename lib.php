@@ -17,7 +17,7 @@
 /**
  * Theme functions.
  *
- * @package    theme_boost
+ * @package    theme_mint
  * @copyright  2016 Frédéric Massart - FMCorz.net
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -79,9 +79,11 @@ function theme_mint_get_extra_scss($theme) {
  * @param array $options
  * @return bool
  */
-function theme_mint_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array()) {
-    if ($context->contextlevel == CONTEXT_SYSTEM && ($filearea === 'logo' || $filearea === 'backgroundimage' ||
-        $filearea === 'loginbackgroundimage')) {
+function theme_mint_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = []) {
+    if (
+        $context->contextlevel == CONTEXT_SYSTEM && ($filearea === 'logo' || $filearea === 'backgroundimage' ||
+        $filearea === 'loginbackgroundimage')
+    ) {
         $theme = theme_config::load('boost');
         // By default, theme files must be cache-able by both browsers and proxies.
         if (!array_key_exists('cacheability', $options)) {
@@ -99,8 +101,7 @@ function theme_mint_pluginfile($course, $cm, $context, $filearea, $args, $forced
  * @param theme_config $theme The theme config object.
  * @return string
  */
-function theme_mint_get_main_scss_content(theme_config $theme): string
-{
+function theme_mint_get_main_scss_content(theme_config $theme): string {
     global $CFG;
 
     $boostscss = theme_boost_get_main_scss_content($theme);
@@ -150,7 +151,7 @@ function theme_mint_get_pre_scss($theme) {
         if (empty($value)) {
             continue;
         }
-        array_map(function($target) use (&$scss, $value) {
+        array_map(function ($target) use (&$scss, $value) {
             $scss .= '$' . $target . ': ' . $value . ";\n";
         }, (array) $targets);
     }

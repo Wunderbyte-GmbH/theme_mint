@@ -21,7 +21,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 o
  */
 class theme_mint_core_h5p_renderer extends \core_h5p\output\renderer {
-
     /**
      * Alter which stylesheets are loaded for H5P.
      * This is useful for adding custom styles or replacing existing ones.
@@ -32,9 +31,9 @@ class theme_mint_core_h5p_renderer extends \core_h5p\output\renderer {
      */
     public function h5p_alter_styles(&$styles, $libraries, $embedtype) {
         global $CFG;
-        $styles[] = (object)array(
+        $styles[] = (object)[
             'path' => $CFG->wwwroot . '/theme/mint/h5p/h5p_overrides.css',
             'version' => '',
-        );
+        ];
     }
 }

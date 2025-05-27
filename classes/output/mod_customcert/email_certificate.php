@@ -17,7 +17,7 @@
 /**
  * Email certificate renderable.
  *
- * @package    mod_customcert
+ * @package    theme_mint
  * @copyright  2017 Mark Nelson <markn@moodle.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -31,7 +31,6 @@ namespace theme_mint\mod_customcert\output;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class email_certificate extends \mod_customcert\output\email_certificate {
-
     /**
      * Constructor.
      *

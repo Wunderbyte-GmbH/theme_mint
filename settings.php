@@ -29,8 +29,13 @@ if ($ADMIN->fulltree) {
     // Blocks to be excluded when this theme is enabled in the "Add a block" list: Administration, Navigation, Courses and
     // Section links.
     $default = 'navigation,settings,course_list,section_links';
-    $setting = new admin_setting_configtext('theme_mint/unaddableblocks',
-        get_string('unaddableblocks', 'theme_mint'), get_string('unaddableblocks_desc', 'theme_mint'), $default, PARAM_TEXT);
+    $setting = new admin_setting_configtext(
+        'theme_mint/unaddableblocks',
+        get_string('unaddableblocks', 'theme_mint'),
+        get_string('unaddableblocks_desc', 'theme_mint'),
+        $default,
+        PARAM_TEXT
+    );
     $page->add($setting);
 
     // Preset.
@@ -57,11 +62,17 @@ if ($ADMIN->fulltree) {
 
     // Preset files setting.
     $name = 'theme_mint/presetfiles';
-    $title = get_string('presetfiles','theme_mint');
+    $title = get_string('presetfiles', 'theme_mint');
     $description = get_string('presetfiles_desc', 'theme_mint');
 
-    $setting = new admin_setting_configstoredfile($name, $title, $description, 'preset', 0,
-        array('maxfiles' => 20, 'accepted_types' => array('.scss')));
+    $setting = new admin_setting_configstoredfile(
+        $name,
+        $title,
+        $description,
+        'preset',
+        0,
+        ['maxfiles' => 20, 'accepted_types' => ['.scss']]
+    );
     $page->add($setting);
 
     // Background image setting.
@@ -96,14 +107,24 @@ if ($ADMIN->fulltree) {
     $page = new admin_settingpage('theme_mint_advanced', get_string('advancedsettings', 'theme_mint'));
 
     // Raw SCSS to include before the content.
-    $setting = new admin_setting_scsscode('theme_mint/scsspre',
-        get_string('rawscsspre', 'theme_mint'), get_string('rawscsspre_desc', 'theme_mint'), '', PARAM_RAW);
+    $setting = new admin_setting_scsscode(
+        'theme_mint/scsspre',
+        get_string('rawscsspre', 'theme_mint'),
+        get_string('rawscsspre_desc', 'theme_mint'),
+        '',
+        PARAM_RAW
+    );
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 
     // Raw SCSS to include after the content.
-    $setting = new admin_setting_scsscode('theme_mint/scss', get_string('rawscss', 'theme_mint'),
-        get_string('rawscss_desc', 'theme_mint'), '', PARAM_RAW);
+    $setting = new admin_setting_scsscode(
+        'theme_mint/scss',
+        get_string('rawscss', 'theme_mint'),
+        get_string('rawscss_desc', 'theme_mint'),
+        '',
+        PARAM_RAW
+    );
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 

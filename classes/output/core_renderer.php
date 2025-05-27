@@ -1,4 +1,18 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 namespace theme_mint\output;
 
@@ -7,15 +21,13 @@ use theme_mint\output\core_course\activity_navigation;
 
 defined('MOODLE_INTERNAL') || die;
 
-class core_renderer extends \theme_boost\output\core_renderer
-{
+class core_renderer extends \theme_boost\output\core_renderer {
     const DEFAULT_MODE = 'light';
     /**
      * @throws \moodle_exception
      * @throws \coding_exception
      */
-    public function standard_head_html()
-    {
+    public function standard_head_html() {
         global $PAGE;
 
         if (isset($_SESSION['currentmode']) && $_SESSION['currentmode']) {
@@ -33,7 +45,7 @@ class core_renderer extends \theme_boost\output\core_renderer
             </script>";
         $PAGE->requires->js(new \moodle_url('/theme/mint/javascript/dark_mode_switch.js'));
 
-        ## Disabling standard MyCourses page
+        // Disabling standard MyCourses page
         $path = $PAGE->__get('url')->get_path();
         if ($path === '/my/courses.php') {
             $url = new \moodle_url('/my/');
@@ -45,14 +57,15 @@ class core_renderer extends \theme_boost\output\core_renderer
             redirect($url);
         }
 
-        ## redirect for database activity (mintcampusactivityheader is not rendered)
+        // redirect for database activity (mintcampusactivityheader is not rendered)
         $bodyattributes = $this->body_attributes();
         $pattern = '/\bcmid-(\d+)\b/';
         if (strpos($bodyattributes, 'path-mod-data') !== false && preg_match($pattern, $bodyattributes, $matches)) {
             $cmid = $matches[1];
             $url = new \moodle_url("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
 
-            if ($url->get_path() === '/mod/data/view.php'
+            if (
+                $url->get_path() === '/mod/data/view.php'
                 && ($url->param('id') != $cmid
                 || $url->param('perpage') <= 1)
                 && $url->param('sesskey') === null
@@ -77,8 +90,10 @@ class core_renderer extends \theme_boost\output\core_renderer
     public function activity_navigation() {
         // First we should check if we want to add navigation.
         $context = $this->page->context;
-        if (($this->page->pagelayout !== 'incourse' && $this->page->pagelayout !== 'frametop')
-            || $context->contextlevel != CONTEXT_MODULE) {
+        if (
+            ($this->page->pagelayout !== 'incourse' && $this->page->pagelayout !== 'frametop')
+            || $context->contextlevel != CONTEXT_MODULE
+        ) {
             return '';
         }
 
@@ -114,7 +129,7 @@ class core_renderer extends \theme_boost\output\core_renderer
                 $modname .= ' ' . get_string('hiddenwithbrackets');
             }
             // Module URL.
-            $linkurl = new moodle_url($module->url, array('forceview' => 1));
+            $linkurl = new moodle_url($module->url, ['forceview' => 1]);
             // Add module URL (as key) and name (as value) to the activity list array.
             $activitylist[$linkurl->out(false)] = $modname;
         }

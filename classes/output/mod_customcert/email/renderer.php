@@ -17,7 +17,7 @@
 /**
  * Email certificate as html renderer.
  *
- * @package    mod_customcert
+ * @package    theme_mint
  * @copyright  2017 Mark Nelson <markn@moodle.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -32,7 +32,6 @@ namespace theme_mint\output\mod_customcert\email;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class renderer extends \mod_customcert\output\email\renderer {
-
     /**
      * The template name for this renderer.
      *
@@ -68,21 +67,18 @@ class renderer extends \mod_customcert\output\email\renderer {
         $cert = $DB->get_record_sql($sql, ['instance' => $record->instance]);
         $certname = $cert->name;
         if ($certname == 'Leistungsnachweis') {
-//             $data->text = "Glückwunsch! 🎉 Du hast es geschafft!
+// $data->text = "Glückwunsch! 🎉 Du hast es geschafft!
 // Du hast mindestens 60 % der Gesamtpunktzahl in $record->fullname erreicht.  Als Anerkennung kannst Du Dir jetzt Deinen Leistungsnachweis in Moodle herunterladen.
 // Teile Deinen Erfolg mit Deinem Netzwerk, feiere Deine Leistung auf LinkedIn und inspiriere andere! 🚀";
             $data->buttonlabel = 'Leistungsnachweis herunterladen ';
-
         } else if ($certname == 'Teilnahmebestätigung') {
-//             $data->text = "Glückwunsch! 🎉 Du hast es geschafft!
+// $data->text = "Glückwunsch! 🎉 Du hast es geschafft!
 // Du hast mindestens 60 % der Gesamtpunktzahl in $record->fullname erreicht.  Als Anerkennung kannst Du Dir jetzt Deinen Leistungsnachweis in Moodle herunterladen.
 // Teile Deinen Erfolg mit Deinem Netzwerk, feiere Deine Leistung auf LinkedIn und inspiriere andere! 🚀";
             $data->buttonlabel = 'Teilenahmebescheinigung herunterladen';
-
         }
         $data->footer = $OUTPUT->image_url('Footermail', 'theme');
 
         return $this->render_from_template('mod_customcert/' . $this->get_template_name(), $data);
     }
-
 }

@@ -33,7 +33,6 @@ if (file_exists($h5prenderer)) {
      * Class theme_foundation_mod_hvp_renderer
      */
     class theme_mint_mod_hvp_renderer extends mod_hvp_renderer {
-
         /**
          * Add styles when an H5P is displayed.
          *
@@ -43,10 +42,10 @@ if (file_exists($h5prenderer)) {
          */
         public function hvp_alter_styles(&$styles, $libraries, $embedtype) {
             global $CFG;
-            $styles[] = (object)array(
+            $styles[] = (object)[
                 'path' => $CFG->wwwroot . '/theme/mint/style/h5p_overrides.css',
                 'version' => '',
-            );
+            ];
         }
     }
 }
